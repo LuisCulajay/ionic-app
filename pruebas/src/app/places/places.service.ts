@@ -23,7 +23,7 @@ export class PlacesService {
     },
     {
       id: 2,
-      titulo: "Estatua de la Libertad",
+      titulo: "Nuevo lugar",
       imagen: 'https://www.educapeques.com/wp-content/uploads/2013/01/estatua-de-la-libertad.jpg',
       comentarios: []
     }
@@ -35,8 +35,13 @@ export class PlacesService {
     return [...this.lugares]  // copia del arreglo
   }
 
-  obtenerLugar(id: string) {
-    return {...this.lugares[parseInt(id)]}
+  obtenerLugar(id: number) {
+    // find retorna el objeto (lugar) que coincida con la condición lugar.id == id
+    return {
+      ...this.lugares.find(lugar => {
+        return lugar.id == id
+      })
+    }
   }
 
   agregarLugar(titulo:string, imagen:string) {
@@ -49,6 +54,9 @@ export class PlacesService {
   }
 
   borrarLugar(id:number) {
-    this.lugares.splice(id, 1)
+    // filter retorna los valores (lugar) que coincidan con la condición lugar.id != id
+    this.lugares = this.lugares.filter(lugar => {
+      return lugar.id != id
+    })
   }
 }

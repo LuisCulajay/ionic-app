@@ -21,6 +21,10 @@ const routes: Routes = [
       {
         path: ":placeId",
         loadChildren: () => import('./places/detail/detail.module').then( m => m.DetailPageModule)
+      },
+      {
+        path: "add",
+        loadChildren: () => import('./places/add/add.module').then( m => m.AddPageModule )
       }
     ]
   },
