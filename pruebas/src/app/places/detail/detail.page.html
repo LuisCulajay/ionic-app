@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button defaultHref="/places" slot="start"></ion-back-button>
+    </ion-buttons>
+    <ion-title>detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col>
+        <ion-img [src]="lugar.imagen"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h1 class="ion-text-center">{{lugar.titulo}}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list *ngIf="lugar.comentarios && lugar.comentarios.length > 0; else noComentarios">
+          <ion-item *ngFor="let comentario of lugar.comentarios">
+            {{comentario}}
+          </ion-item>
+        </ion-list>
+        <ng-template #noComentarios>
+          <ion-text>
+            <p class="ion-text-center">Sin comentarios</p>
+          </ion-text>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
