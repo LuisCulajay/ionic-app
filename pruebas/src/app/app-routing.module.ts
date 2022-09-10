@@ -28,6 +28,10 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'componentes',
+    loadChildren: () => import('./componentes/componentes.module').then( m => m.ComponentesPageModule)
+  },
 ];
 
 @NgModule({
